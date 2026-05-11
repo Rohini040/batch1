@@ -22,7 +22,7 @@ pipeline {
         stage('Code Review') {
             steps {
                 withSonarQubeEnv('Sonar_server') {
-                    sh 'mvn clean sonar:sonar'
+                    sh 'mvn clean verify sonar:sonar'
                 }
             }
         }
