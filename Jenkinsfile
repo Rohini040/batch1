@@ -22,7 +22,7 @@ pipeline {
         stage('Code Review') {
             steps {
                 withSonarQubeEnv('Sonar_server') {
-                    sh 'mvn clean verify sonar:sonar'
+                    sh 'mvn clean verify sonar:sonar -Dsonar.login=sqa_03cb93bbfcc19ebd4f67ef3296a1299d98d481257'
                 }
             }
         }
