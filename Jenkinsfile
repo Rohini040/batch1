@@ -19,11 +19,13 @@ pipeline {
             }
         }
 
-        stage('Code Review') {
-            steps {
-                sh 'mvn clean sonar:sonar'
-            }
+      stage('Code Review') {
+    steps {
+        withSonarQubeEnv('SonarQube') {
+            sh 'mvn clean sonar:sonar'
         }
+    }
+}
 
         stage('Maven Build') {
             steps {
