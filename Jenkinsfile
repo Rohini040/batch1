@@ -14,20 +14,18 @@ pipeline {
         stage('SCM Code Clone') {
             steps {
                 git branch: 'main',
-                credentialsId: 'GitHub',
-                url: 'https://github.com/Rohini040/batch1.git'
+                    credentialsId: 'GitHub',
+                    url: 'https://github.com/Rohini040/batch1.git'
             }
         }
 
-
-      stage('Code Review') {
         stage('Code Review') {
-    steps {
-        withSonarQubeEnv('SonarQube') {
-            sh 'mvn clean sonar:sonar'
+            steps {
+                withSonarQubeEnv('SonarQube') {
+                    sh 'mvn clean sonar:sonar'
+                }
+            }
         }
-    }
-}
 
         stage('Maven Build') {
             steps {
